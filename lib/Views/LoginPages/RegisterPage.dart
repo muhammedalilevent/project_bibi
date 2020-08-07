@@ -133,12 +133,13 @@ class _RegisterPageState extends State<RegisterPage> {
 
                     Text("Yaşınız :",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
 
-                    SizedBox(height: 10,),
+                    SizedBox(height: 3,),
 
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: DropdownButtonHideUnderline(
                         child: Container(
+                          height: 35,
                           decoration: ShapeDecoration(
                               shape: RoundedRectangleBorder(
                                   side: BorderSide(width: 1, color: Colors.grey),
@@ -167,12 +168,13 @@ class _RegisterPageState extends State<RegisterPage> {
 
                     Text("Cinsiyetiniz :",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
 
-                    SizedBox(height: 10,),
+                    SizedBox(height: 3,),
 
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: DropdownButtonHideUnderline(
                         child: Container(
+                          height: 35,
                           decoration: ShapeDecoration(
                               shape: RoundedRectangleBorder(
                                   side: BorderSide(width: 1, color: Colors.grey),

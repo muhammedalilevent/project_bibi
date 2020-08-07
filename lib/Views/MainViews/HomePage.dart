@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.only(top: 25),
                 height: 200,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade500,
+                  color: index % 2 == 0 ? bibiPink : bibiBlue,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(

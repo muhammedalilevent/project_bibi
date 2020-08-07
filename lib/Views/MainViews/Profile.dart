@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Profil Page"),
+        actions: <Widget>[
+          FlatButton(onPressed:(){
 
-
-      child: Center(
-        child: Icon(
-          Icons.account_circle,size: 75,
-        ),
+          },
+          child: Text("Çıkış Yap"),)
+        ],
       ),
     );
   }

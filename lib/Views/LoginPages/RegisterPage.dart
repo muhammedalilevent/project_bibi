@@ -124,6 +124,83 @@ class _RegisterPageState extends State<RegisterPage> {
                 validator: _surnameControl,
               ),
             ),
+
+            Container(
+              padding: EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+                color: Colors.white,
+              ),
+              child: TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                controller: controllerEmail,
+                obscureText: false,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email),
+                  hintText: "abc123@gmail.com",
+                  labelText: "E-mail",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: bibiPink, width: 2),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                ),
+                validator: _emailControl,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+                color: Colors.white,
+              ),
+              child: TextFormField(
+                keyboardType: TextInputType.visiblePassword,
+                controller: controllerPassword,
+                obscureText: true,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.vpn_key),
+                  hintText: "******",
+                  labelText: "Şifre",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: bibiPink, width: 2),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(50)),
+                color: Colors.white,
+              ),
+              child: TextFormField(
+                keyboardType: TextInputType.visiblePassword,
+                controller: controllerName,
+                obscureText: true,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.vpn_key),
+                  hintText: "******",
+                  labelText: "Şifre Tekrar",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: bibiPink, width: 2),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                ),
+                validator: _passwordControl,
+              ),
+            ),
+
+
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -201,82 +278,6 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
 
 
-
-
-            Container(
-              padding: EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(50)),
-                color: Colors.white,
-              ),
-              child: TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                controller: controllerEmail,
-                obscureText: false,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.email),
-                  hintText: "abc123@gmail.com",
-                  labelText: "E-mail",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: bibiPink, width: 2),
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                ),
-                validator: _emailControl,
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(50)),
-                color: Colors.white,
-              ),
-              child: TextFormField(
-                keyboardType: TextInputType.visiblePassword,
-                controller: controllerPassword,
-                obscureText: true,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.vpn_key),
-                  hintText: "******",
-                  labelText: "Şifre",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: bibiPink, width: 2),
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(50)),
-                color: Colors.white,
-              ),
-              child: TextFormField(
-                keyboardType: TextInputType.visiblePassword,
-                controller: controllerName,
-                obscureText: true,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.vpn_key),
-                  hintText: "******",
-                  labelText: "Şifre Tekrar",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: bibiPink, width: 2),
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                ),
-                validator: _passwordControl,
-              ),
-            ),
             Container(
               margin: EdgeInsets.only(top: 15),
               height: 50,

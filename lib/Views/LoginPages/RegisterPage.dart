@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_bibi/Views/LoginPages/LoginPage.dart';
 import 'package:project_bibi/Views/MainViews/CorePage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../MainViews/CorePage.dart';
 
@@ -160,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
       if (datauser != null) {
         var message =
-            datauser['message'] != null ? datauser['message'] : 'Başarısız';
+        datauser['message'] != null ? datauser['message'] : 'Başarısız';
         if (datauser['success'] == true) {
           Fluttertoast.showToast(
               msg: "Kayıt Başarılı Hoşgeldin ",
@@ -232,104 +231,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 validator: _surnameControl,
               ),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "Yaşınız :",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: DropdownButtonHideUnderline(
-                        child: Container(
-                          height: 35,
-                          decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                  side:
-                                      BorderSide(width: 1, color: Colors.grey),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)))),
-                          child: DropdownButton<int>(
-                            items: ages.map((secilen) {
-                              return DropdownMenuItem<int>(
-                                child: Text(
-                                  "$secilen",
-                                  textAlign: TextAlign.center,
-                                ),
-                                value: secilen,
-                              );
-                            }).toList(),
-                            onChanged: (int secilen) {
-                              setState(() {
-                                secilenYas = secilen;
-                              });
-                            },
-                            value: secilenYas,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "Cinsiyetiniz :",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                    SizedBox(
-                      height: 3,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: DropdownButtonHideUnderline(
-                        child: Container(
-                          height: 35,
-                          decoration: ShapeDecoration(
-                              shape: RoundedRectangleBorder(
-                                  side:
-                                      BorderSide(width: 1, color: Colors.grey),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)))),
-                          child: DropdownButton<String>(
-                            items: cinsiyet.map((secilen) {
-                              return DropdownMenuItem<String>(
-                                child: Text(
-                                  "$secilen",
-                                  textAlign: TextAlign.center,
-                                ),
-                                value: secilen,
-                              );
-                            }).toList(),
-                            onChanged: (secilen) {
-                              setState(() {
-                                secilenCinsiyet = secilen;
-                                if (secilen == "Erkek")
-                                  gender = true;
-                                else
-                                  gender = false;
-                              });
-                            },
-                            value: secilenCinsiyet,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+
 
             Container(
               padding: EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
@@ -368,7 +270,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.vpn_key),
-                  hintText: "******",
+                  hintText: "**",
                   labelText: "Şifre",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(50),
@@ -392,7 +294,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.vpn_key),
-                  hintText: "******",
+                  hintText: "**",
                   labelText: "Şifre Tekrar",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(50),
@@ -405,57 +307,164 @@ class _RegisterPageState extends State<RegisterPage> {
                 validator: _passwordControl,
               ),
             ),
+
+
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Text(
+                      "Yaşınız :",
+                      textAlign: TextAlign.center,
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: DropdownButtonHideUnderline(
+                        child: Container(
+                          height: 35,
+                          decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                  side:
+                                  BorderSide(width: 1, color: Colors.grey),
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(20)))),
+                          child: DropdownButton<int>(
+                            items: ages.map((secilen) {
+                              return DropdownMenuItem<int>(
+                                child: Text(
+                                  "$secilen",
+                                  textAlign: TextAlign.center,
+                                ),
+                                value: secilen,
+                              );
+                            }).toList(),
+                            onChanged: (int secilen) {
+                              setState(() {
+                                secilenYas = secilen;
+                              });
+                            },
+                            value: secilenYas,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: <Widget>[
+                    Text(
+                      "Cinsiyetiniz :",
+                      textAlign: TextAlign.center,
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: DropdownButtonHideUnderline(
+                        child: Container(
+                          height: 35,
+                          decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                  side:
+                                  BorderSide(width: 1, color: Colors.grey),
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(20)))),
+                          child: DropdownButton<String>(
+                            items: cinsiyet.map((secilen) {
+                              return DropdownMenuItem<String>(
+                                child: Text(
+                                  "$secilen",
+                                  textAlign: TextAlign.center,
+                                ),
+                                value: secilen,
+                              );
+                            }).toList(),
+                            onChanged: (secilen) {
+                              setState(() {
+                                secilenCinsiyet = secilen;
+                                if (secilen == "Erkek")
+                                  gender = true;
+                                else
+                                  gender = false;
+                              });
+                            },
+                            value: secilenCinsiyet,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+
             Container(
               margin: EdgeInsets.only(top: 15),
               height: 50,
               width: 200,
-              child: RaisedButton(
-                highlightColor: bibiPink,
-                color: bibiBlue,
-                child: Text(
-                  'DEVAM',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic,
-                      textBaseline: TextBaseline.alphabetic),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: RaisedButton(
+                  highlightColor: bibiPink,
+                  color: bibiBlue,
+                  child: Text(
+                    'DEVAM',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        textBaseline: TextBaseline.alphabetic),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      otomatikKontrol = true;
+                    });
+                    signUp();
+                  },
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                onPressed: () {
-                  setState(() {
-                    otomatikKontrol = true;
-                  });
-                  signUp();
-                },
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 15),
               height: 50,
               width: 200,
-              child: RaisedButton(
-                highlightColor: bibiBlue,
-                hoverColor: Colors.red,
-                color: bibiPink,
-                child: Text(
-                  'GERİ',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic,
-                      textBaseline: TextBaseline.alphabetic),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: RaisedButton(
+                  highlightColor: bibiBlue,
+                  hoverColor: Colors.red,
+                  color: bibiPink,
+                  child: Text(
+                    'GERİ',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        textBaseline: TextBaseline.alphabetic),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => LoginPage()));
+                  },
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => LoginPage()));
-                },
               ),
             ),
 
@@ -464,26 +473,29 @@ class _RegisterPageState extends State<RegisterPage> {
               margin: EdgeInsets.only(top: 15),
               height: 50,
               width: 200,
-              child: RaisedButton(
-                highlightColor: Colors.green.shade800,
-                hoverColor: Colors.red,
-                color: bibiBlue,
-                child: Text(
-                  'Misafir Girişi',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic,
-                      textBaseline: TextBaseline.alphabetic),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: RaisedButton(
+                  highlightColor: Colors.green.shade800,
+                  hoverColor: Colors.red,
+                  color: bibiBlue,
+                  child: Text(
+                    'Misafir Girişi',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        textBaseline: TextBaseline.alphabetic),
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => CorePage()));
+                  },
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => CorePage()));
-                },
               ),
             ),
             SizedBox(

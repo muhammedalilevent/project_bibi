@@ -1,12 +1,12 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_bibi/Views/LoginPages/LoginPage.dart';
 import 'package:project_bibi/Views/MainViews/CorePage.dart';
-import 'package:project_bibi/Views/MainViews/HomePage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
+import '../MainViews/CorePage.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -14,11 +14,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-
-
-
-
-
   //Controller Tanımlamaları
   TextEditingController controllerName = TextEditingController();
   TextEditingController controllerSurname = TextEditingController();
@@ -29,14 +24,112 @@ class _RegisterPageState extends State<RegisterPage> {
   Color bibiPink = Hexcolor("#fd79b2");
   Color bibiBlue = Hexcolor("#51c1be");
   int secilenYas = 15;
-  var ages=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,
-    28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,
-    56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,
-    82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100];
+  var ages = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100
+  ];
 
-  String secilenCinsiyet="Erkek";
-  var cinsiyet=["Erkek","Kadın"];
-
+  String secilenCinsiyet = "Erkek";
+  var cinsiyet = ["Erkek", "Kadın"];
+  bool gender = true;
 
   @override
   Widget build(BuildContext context) {
@@ -44,23 +137,38 @@ class _RegisterPageState extends State<RegisterPage> {
     Future<List> signUp() async {
       debugPrint("signUp fonks girildi");
       final response = await http
-          .post("http://leventsoftware.com/myApi/flutter/login.php", body: {
-        //URL DEĞİŞTİRİLECEK
-        "first_name": controllerName.text,
-        "last_name": controllerSurname.text,
+          .post("http://leventsoftware.com/leventAPI/signUp.php", body: {
+        "username": controllerName.text,
+        "surname": controllerSurname.text,
         "email": controllerEmail.text,
-        "phone": controllerPhone.text,
+        "gender": gender ? "1" : "0",
+        "age": "$secilenYas",
         "password": controllerPassword.text,
+        /* "username": "mobil",
+        "surname": "mobil",
+        "gender": 1,
+        "age" : 31,
+        "email": "mobil@mobil.com",
+        "password": "mobilmobil",*/
       });
+      debugPrint("http Post Çalıştırıldı" +
+          response.statusCode.toString() +
+          " " +
+          response.body);
       var datauser = json.decode(response.body);
 
       if (datauser != null) {
         var message =
         datauser['message'] != null ? datauser['message'] : 'Başarısız';
         if (datauser['success'] == true) {
+          Fluttertoast.showToast(
+              msg: "Kayıt Başarılı Hoşgeldin ",
+              toastLength: Toast.LENGTH_LONG,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 1);
           debugPrint("MESAJ:" + message);
           Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (BuildContext context) => HomePage()));
+              MaterialPageRoute(builder: (BuildContext context) => CorePage()));
         } else {
           debugPrint("MESAJ:" + message);
         }
@@ -74,8 +182,7 @@ class _RegisterPageState extends State<RegisterPage> {
         child: ListView(
           children: <Widget>[
             Container(
-              padding:
-              EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 4),
+              padding: EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 4),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(50)),
                 color: Colors.white,
@@ -125,6 +232,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
 
+
             Container(
               padding: EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
               decoration: BoxDecoration(
@@ -162,7 +270,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.vpn_key),
-                  hintText: "******",
+                  hintText: "**",
                   labelText: "Şifre",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(50),
@@ -182,11 +290,11 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               child: TextFormField(
                 keyboardType: TextInputType.visiblePassword,
-                controller: controllerName,
+                //controller: controllerName,
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.vpn_key),
-                  hintText: "******",
+                  hintText: "**",
                   labelText: "Şifre Tekrar",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(50),
@@ -207,11 +315,15 @@ class _RegisterPageState extends State<RegisterPage> {
               children: <Widget>[
                 Column(
                   children: <Widget>[
-
-                    Text("Yaşınız :",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
-
-                    SizedBox(height: 3,),
-
+                    Text(
+                      "Yaşınız :",
+                      textAlign: TextAlign.center,
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: DropdownButtonHideUnderline(
@@ -219,20 +331,25 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 35,
                           decoration: ShapeDecoration(
                               shape: RoundedRectangleBorder(
-                                  side: BorderSide(width: 1, color: Colors.grey),
-                                  borderRadius: BorderRadius.all(Radius.circular(20)))),
+                                  side:
+                                  BorderSide(width: 1, color: Colors.grey),
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(20)))),
                           child: DropdownButton<int>(
                             items: ages.map((secilen) {
                               return DropdownMenuItem<int>(
-                                child: Text("$secilen",textAlign: TextAlign.center,), value: secilen,);
-
+                                child: Text(
+                                  "$secilen",
+                                  textAlign: TextAlign.center,
+                                ),
+                                value: secilen,
+                              );
                             }).toList(),
                             onChanged: (int secilen) {
                               setState(() {
-                                secilenYas=secilen;
+                                secilenYas = secilen;
                               });
                             },
-
                             value: secilenYas,
                           ),
                         ),
@@ -242,11 +359,15 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 Column(
                   children: <Widget>[
-
-                    Text("Cinsiyetiniz :",textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
-
-                    SizedBox(height: 3,),
-
+                    Text(
+                      "Cinsiyetiniz :",
+                      textAlign: TextAlign.center,
+                      style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: DropdownButtonHideUnderline(
@@ -254,17 +375,27 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: 35,
                           decoration: ShapeDecoration(
                               shape: RoundedRectangleBorder(
-                                  side: BorderSide(width: 1, color: Colors.grey),
-                                  borderRadius: BorderRadius.all(Radius.circular(20)))),
+                                  side:
+                                  BorderSide(width: 1, color: Colors.grey),
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(20)))),
                           child: DropdownButton<String>(
                             items: cinsiyet.map((secilen) {
                               return DropdownMenuItem<String>(
-                                child: Text("$secilen",textAlign: TextAlign.center,), value: secilen,);
-
+                                child: Text(
+                                  "$secilen",
+                                  textAlign: TextAlign.center,
+                                ),
+                                value: secilen,
+                              );
                             }).toList(),
                             onChanged: (secilen) {
                               setState(() {
-                                secilenCinsiyet=secilen;
+                                secilenCinsiyet = secilen;
+                                if (secilen == "Erkek")
+                                  gender = true;
+                                else
+                                  gender = false;
                               });
                             },
                             value: secilenCinsiyet,
@@ -277,11 +408,10 @@ class _RegisterPageState extends State<RegisterPage> {
               ],
             ),
 
-
             Container(
               margin: EdgeInsets.only(top: 15),
               height: 50,
-              width: 180,
+              width: 200,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: RaisedButton(
@@ -311,7 +441,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Container(
               margin: EdgeInsets.only(top: 15),
               height: 50,
-              width: 180,
+              width: 200,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: RaisedButton(
@@ -331,7 +461,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) =>LoginPage() ));
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => LoginPage()));
                   },
                 ),
               ),
@@ -341,7 +472,7 @@ class _RegisterPageState extends State<RegisterPage> {
             Container(
               margin: EdgeInsets.only(top: 15),
               height: 50,
-              width: 180,
+              width: 200,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: RaisedButton(
@@ -361,13 +492,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     borderRadius: BorderRadius.circular(30.0),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => CorePage() ));
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => CorePage()));
                   },
                 ),
               ),
             ),
-            SizedBox(height: 25,)
-
+            SizedBox(
+              height: 25,
+            )
           ],
         ),
       ),
@@ -418,4 +551,3 @@ class _RegisterPageState extends State<RegisterPage> {
       return null;
   }
 }
-

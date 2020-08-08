@@ -20,8 +20,10 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController controllerPhone = TextEditingController();
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
+  TextEditingController _confirmPass = TextEditingController();
   bool otomatikKontrol = false;
   Color bibiPink = Hexcolor("#fd79b2");
+  final _formKey = GlobalKey<FormState>();
   Color bibiBlue = Hexcolor("#51c1be");
   int secilenYas = 15;
   var ages = [
@@ -144,7 +146,6 @@ class _RegisterPageState extends State<RegisterPage> {
         "gender": gender ? "1" : "0",
         "age": "$secilenYas",
         "password": controllerPassword.text,
-
       });
       debugPrint("http Post Çalıştırıldı" +
           response.statusCode.toString() +
@@ -154,7 +155,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
       if (datauser != null) {
         var message =
-        datauser['message'] != null ? datauser['message'] : 'Başarısız';
+            datauser['message'] != null ? datauser['message'] : 'Başarısız';
         if (datauser['success'] == true) {
           Fluttertoast.showToast(
               msg: "Kayıt Başarılı Hoşgeldin ",
@@ -173,6 +174,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       body: Form(
+        key: _formKey,
         autovalidate: otomatikKontrol,
         child: ListView(
           children: <Widget>[
@@ -226,8 +228,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 validator: _surnameControl,
               ),
             ),
-
-
             Container(
               padding: EdgeInsets.only(top: 4, left: 16, right: 16, bottom: 4),
               decoration: BoxDecoration(
@@ -262,6 +262,11 @@ class _RegisterPageState extends State<RegisterPage> {
               child: TextFormField(
                 keyboardType: TextInputType.visiblePassword,
                 controller: controllerPassword,
+                validator: (val){
+                  if(val.isEmpty)
+                    return 'Boş Bırakılamaz';
+                  return null;
+                },
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.vpn_key),
@@ -285,8 +290,8 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               child: TextFormField(
                 keyboardType: TextInputType.visiblePassword,
-
                 obscureText: true,
+                controller: _confirmPass,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.vpn_key),
                   hintText: "******",
@@ -299,11 +304,15 @@ class _RegisterPageState extends State<RegisterPage> {
                     borderRadius: BorderRadius.circular(50),
                   ),
                 ),
-                validator: _passwordControl,
+                validator: (val){
+                  if(val.isEmpty)
+                    return 'Empty';
+                  if(val != controllerPassword.text)
+                    return "Parolalar Eşleşmiyor";
+                  return null;
+                },
               ),
             ),
-
-
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -311,10 +320,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 Column(
                   children: <Widget>[
                     Text(
-                      "Yaşınız :",
+                      "Yaşınız",
                       textAlign: TextAlign.center,
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     SizedBox(
                       height: 3,
@@ -327,9 +336,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           decoration: ShapeDecoration(
                               shape: RoundedRectangleBorder(
                                   side:
-                                  BorderSide(width: 1, color: Colors.grey),
+                                      BorderSide(width: 1, color: Colors.grey),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(20)))),
+                                      BorderRadius.all(Radius.circular(20)))),
                           child: DropdownButton<int>(
                             items: ages.map((secilen) {
                               return DropdownMenuItem<int>(
@@ -355,10 +364,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 Column(
                   children: <Widget>[
                     Text(
-                      "Cinsiyetiniz :",
+                      "  Cinsiyetiniz",
                       textAlign: TextAlign.center,
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     SizedBox(
                       height: 3,
@@ -371,9 +380,9 @@ class _RegisterPageState extends State<RegisterPage> {
                           decoration: ShapeDecoration(
                               shape: RoundedRectangleBorder(
                                   side:
-                                  BorderSide(width: 1, color: Colors.grey),
+                                      BorderSide(width: 1, color: Colors.grey),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(20)))),
+                                      BorderRadius.all(Radius.circular(20)))),
                           child: DropdownButton<String>(
                             items: cinsiyet.map((secilen) {
                               return DropdownMenuItem<String>(
@@ -402,7 +411,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ],
             ),
-
             Container(
               margin: EdgeInsets.only(top: 15),
               height: 50,
@@ -413,7 +421,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   highlightColor: bibiPink,
                   color: bibiBlue,
                   child: Text(
-                    'DEVAM',
+                    'TAMAMLA',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 24.0,
@@ -428,7 +436,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     setState(() {
                       otomatikKontrol = true;
                     });
-                    signUp();
+                    if (_formKey.currentState.validate()) {
+                      signUp();
+                    }
                   },
                 ),
               ),
@@ -462,8 +472,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
-
-
             SizedBox(
               height: 25,
             )
@@ -504,7 +512,9 @@ class _RegisterPageState extends State<RegisterPage> {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
-    if (!regex.hasMatch(mail))
+    if(mail.length==0)
+      return "Bu Alanı Boş Bırakamazsınız";
+    else if (!regex.hasMatch(mail))
       return 'Geçersiz mail';
     else
       return null;

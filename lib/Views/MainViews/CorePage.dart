@@ -4,7 +4,7 @@ import 'package:project_bibi/Views/MainViews/BibiPage.dart';
 import 'package:project_bibi/Views/MainViews/HomePage.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import 'Profile.dart';
+import 'ProfilePage.dart';
 import 'dialog_screen.dart';
 
 class CorePage extends StatefulWidget {

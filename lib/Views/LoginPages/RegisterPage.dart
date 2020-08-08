@@ -144,12 +144,7 @@ class _RegisterPageState extends State<RegisterPage> {
         "gender": gender ? "1" : "0",
         "age": "$secilenYas",
         "password": controllerPassword.text,
-        /* "username": "mobil",
-        "surname": "mobil",
-        "gender": 1,
-        "age" : 31,
-        "email": "mobil@mobil.com",
-        "password": "mobilmobil",*/
+
       });
       debugPrint("http Post Çalıştırıldı" +
           response.statusCode.toString() +
@@ -203,7 +198,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     borderRadius: BorderRadius.circular(50),
                   ),
                 ),
-                //validator: _nameControl,
+                validator: _nameControl,
               ),
             ),
             Container(
@@ -270,7 +265,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.vpn_key),
-                  hintText: "**",
+                  hintText: "******",
                   labelText: "Şifre",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(50),
@@ -290,11 +285,11 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               child: TextFormField(
                 keyboardType: TextInputType.visiblePassword,
-                //controller: controllerName,
+
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(Icons.vpn_key),
-                  hintText: "**",
+                  hintText: "******",
                   labelText: "Şifre Tekrar",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(50),

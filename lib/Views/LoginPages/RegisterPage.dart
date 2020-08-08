@@ -408,7 +408,7 @@ class _RegisterPageState extends State<RegisterPage> {
               height: 50,
               width: 200,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 100),
                 child: RaisedButton(
                   highlightColor: bibiPink,
                   color: bibiBlue,
@@ -438,7 +438,7 @@ class _RegisterPageState extends State<RegisterPage> {
               height: 50,
               width: 200,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 100),
                 child: RaisedButton(
                   highlightColor: bibiBlue,
                   hoverColor: Colors.red,
@@ -463,36 +463,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
 
-            //Misafir Girişi Sonradan Kaldırılacak//
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              height: 50,
-              width: 200,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: RaisedButton(
-                  highlightColor: Colors.green.shade800,
-                  hoverColor: Colors.red,
-                  color: bibiBlue,
-                  child: Text(
-                    'Misafir Girişi',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic,
-                        textBaseline: TextBaseline.alphabetic),
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => CorePage()));
-                  },
-                ),
-              ),
-            ),
+
             SizedBox(
               height: 25,
             )

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:http/http.dart' as http;
@@ -159,7 +160,7 @@ class _RegisterPageState extends State<RegisterPage> {
         if (datauser['success'] == true) {
           Fluttertoast.showToast(
               msg: "Kayıt Başarılı Hoşgeldin ",
-              textColor: Colors.black,
+             textColor:defaultTargetPlatform == TargetPlatform.android ? Colors.black : Colors.white ,
               toastLength: Toast.LENGTH_LONG,
               gravity: ToastGravity.BOTTOM,
               timeInSecForIosWeb: 1);

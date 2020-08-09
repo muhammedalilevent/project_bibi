@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
             title: Text(
               "Teknoloji Nedir ?",
               textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.black),
             ),
             leading: CircleAvatar(
               backgroundColor: index % 2 == 0 ? bibiPink : bibiBlue,
@@ -34,19 +35,36 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(top: 25),
-                height: 200,
-                decoration: BoxDecoration(
-                  color: index % 2 == 0 ? bibiPink : bibiBlue,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  "Teknoloji bir insan etkinliğidir. İnsanlık tarihinde bilimden ve mühendislikten önce var olmuş olan bir kavramdır. Pek çok yönden bilimin uygulamaya geçirilmiş"
-                      " hali olarak görülmektedir. ... Ayrıca üretim yöntemlerinin, yeteneklerin bir araya gelmesini sağlayan bilgi bütününe de teknoloji olarak nitelendirilmektedir.",
-                  style: TextStyle(fontSize: 16, color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
+              Stack(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(top: 50),
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: index % 2 == 0 ? bibiPink : bibiBlue,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      "Teknoloji bir insan etkinliğidir. İnsanlık tarihinde bilimden ve mühendislikten önce var olmuş olan bir kavramdır. Pek çok yönden bilimin uygulamaya geçirilmiş"
+                          " hali olarak görülmektedir. ... Ayrıca üretim yöntemlerinin, yeteneklerin bir araya gelmesini sağlayan bilgi bütününe de teknoloji olarak nitelendirilmektedir.",
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+
+
+                  Positioned(
+                    left: 20,
+                    top: 5,
+                    child: Row(
+                      children: <Widget>[
+                        CircleAvatar(backgroundColor: Colors.white,child: Text("bE",style: TextStyle(color: Colors.black),),),
+                        SizedBox(width: 20,),
+                        Text("bibiEkip",style: TextStyle(color: index%2==0 ? bibiBlue : bibiPink,),),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           );

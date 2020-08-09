@@ -58,6 +58,9 @@ class _LoginPageState extends State<LoginPage> {
           padding: EdgeInsets.all(10),
           color: Colors.white,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
                 width: 250.0,
@@ -86,8 +89,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       child: TextFormField(
                         keyboardType: TextInputType.emailAddress,
-                        controller: controllerEmail,
+                       // controller: controllerEmail,
                         obscureText: false,
+                        initialValue: "enesozudogruu@gmail.com",
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.account_circle),
                           hintText: "abc@tmail.com",
@@ -110,8 +114,9 @@ class _LoginPageState extends State<LoginPage> {
                         color: Colors.white,
                       ),
                       child: TextFormField(
-                        controller: controllerPass,
+                       // controller: controllerPass,
                         obscureText: true,
+                        initialValue: "12345678",
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.account_circle),
                           hintText: "******",

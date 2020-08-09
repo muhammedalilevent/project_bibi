@@ -159,6 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
         if (datauser['success'] == true) {
           Fluttertoast.showToast(
               msg: "Kayıt Başarılı Hoşgeldin ",
+              textColor: Colors.black,
               toastLength: Toast.LENGTH_LONG,
               gravity: ToastGravity.BOTTOM,
               timeInSecForIosWeb: 1);

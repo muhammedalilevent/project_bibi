@@ -5,7 +5,7 @@ import 'package:project_bibi/Views/MainViews/HomePage.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import 'ProfilePage.dart';
-import 'dialog_screen.dart';
+import '../../DialogScreens/AddBibiQuestionDS.dart';
 
 class CorePage extends StatefulWidget {
   @override

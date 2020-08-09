@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.7.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -33,9 +34,18 @@ dependencies:
   hexcolor: ^1.0.4
   fluttertoast: ^7.0.2
 
+
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/bibi-png.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -49,6 +59,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+
+
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

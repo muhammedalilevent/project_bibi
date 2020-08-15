@@ -26,7 +26,13 @@ class _BibiDetailPageState extends State<BibiDetailPage> {
   Widget build(BuildContext context) {
     total = like - dislike;
     return Scaffold(
-        body: SingleChildScrollView(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: InkWell(onTap: () => Navigator.of(context).pop(),child: Icon(Icons.arrow_back)),
+          elevation: 0,
+        ),
+        body: Container(
+          color: Colors.white,
           child: Column(
             children: <Widget>[
               Row(
@@ -136,134 +142,136 @@ class _BibiDetailPageState extends State<BibiDetailPage> {
                 height: 25,
               ),
 
-              Container(
-                constraints: BoxConstraints(
-                    maxWidth: MediaQuery
-                        .of(context)
-                        .size
-                        .width,
-                    maxHeight: MediaQuery
-                        .of(context)
-                        .size
-                        .shortestSide),
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 15,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 10, left: 5, right: 5, bottom: 55),
-                                  child: CircleAvatar(
-                                    radius: 25,
-                                    backgroundColor: Colors.deepOrange,
-
-                                  ),
-                                ),
-                                Container(
-                                  width: MediaQuery
-                                      .of(context)
-                                      .size
-                                      .width - 75,
-                                  child: Column(
-                                    children: <Widget>[
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          Text(
-                                            //tumSoruListesi[index].kullanici,
-                                            "Kullanıcı $index",
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text("23.06.10    15:45"),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(answer + index.toString()),
-                                      SizedBox(
-                                        height: 15,
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                            Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width - 75,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              Expanded(
+                child: Container(
+                  constraints: BoxConstraints(
+                      maxWidth: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
+                      maxHeight: MediaQuery
+                          .of(context)
+                          .size
+                          .shortestSide),
+                  child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 15,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          child: Column(
+                            children: <Widget>[
+                              Row(
                                 children: <Widget>[
-                                  //İç İçe Icon-Text
-                                  Opacity(
-                                    opacity: 0,
-                                    child: Row(
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.comment,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(comment.toString())
-                                      ],
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 10, left: 5, right: 5, bottom: 55),
+                                    child: CircleAvatar(
+                                      radius: 25,
+                                      backgroundColor: Colors.deepOrange,
+
                                     ),
                                   ),
-
-                                  //İç İçe Icon-Text
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Image.asset(
-                                        "assets/images/like.png",
-                                        height: 25,
-                                        width: 25,
-                                      ),
-
-                                      SizedBox(
-                                        width: 25,
-                                      ),
-
-                                      Image.asset(
-                                        "assets/images/dislike.png",
-                                        height: 25,
-                                        width: 25,
-                                      ),
-                                      SizedBox(
-                                        width: 30,
-                                      ),
-                                      Text(
-                                        total.toString(),
-                                        style: TextStyle(
-                                            color: total > 0
-                                                ? Colors.green.shade700
-                                                : Colors.red.shade700),
-                                      )
-
-                                      //İç İçe Icon-Tex
-                                    ],
-                                  ),
+                                  Container(
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width - 75,
+                                    child: Column(
+                                      children: <Widget>[
+                                        Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                          children: <Widget>[
+                                            Text(
+                                              //tumSoruListesi[index].kullanici,
+                                              "Kullanıcı $index",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text("23.06.10    15:45"),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(answer + index.toString()),
+                                        SizedBox(
+                                          height: 15,
+                                        )
+                                      ],
+                                    ),
+                                  )
                                 ],
                               ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            )
-                          ],
-                        ),
-                      );
-                    }),
+                              Container(
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width - 75,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: <Widget>[
+                                    //İç İçe Icon-Text
+                                    Opacity(
+                                      opacity: 0,
+                                      child: Row(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.comment,
+                                          ),
+                                          SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(comment.toString())
+                                        ],
+                                      ),
+                                    ),
+
+                                    //İç İçe Icon-Text
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Image.asset(
+                                          "assets/images/like.png",
+                                          height: 25,
+                                          width: 25,
+                                        ),
+
+                                        SizedBox(
+                                          width: 25,
+                                        ),
+
+                                        Image.asset(
+                                          "assets/images/dislike.png",
+                                          height: 25,
+                                          width: 25,
+                                        ),
+                                        SizedBox(
+                                          width: 30,
+                                        ),
+                                        Text(
+                                          total.toString(),
+                                          style: TextStyle(
+                                              color: total > 0
+                                                  ? Colors.green.shade700
+                                                  : Colors.red.shade700),
+                                        )
+
+                                        //İç İçe Icon-Tex
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              )
+                            ],
+                          ),
+                        );
+                      }),
+                ),
               ),
 
               Row(
@@ -273,7 +281,7 @@ class _BibiDetailPageState extends State<BibiDetailPage> {
                     child: InkWell(
                       child: Icon(
                         Icons.comment,
-                        color: Colors.grey,
+                        //color: Colors.grey,
                       ),
                     ),
                   ),

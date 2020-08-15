@@ -95,21 +95,23 @@ TabController tabController;
 
                         SizedBox(height: 15,),
 
-                        Container(
-                          width: MediaQuery.of(context).size.width-150,
-                          child: Row(
-                            crossAxisAlignment:CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text("256 Takipçi",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
-                              Text("158 Takip",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
-                              Text("48 Total Puan",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),)
-                            ],
-                          ),
-                        )
+
                       ],
-                    )
+                    ),
+
                   ],
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Row(
+                    crossAxisAlignment:CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Text("256 Takipçi",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+                      Text("158 Takip",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+                      Text("48 Total Puan",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),)
+                    ],
+                  ),
                 ),
 
                 SizedBox(height: 15,),

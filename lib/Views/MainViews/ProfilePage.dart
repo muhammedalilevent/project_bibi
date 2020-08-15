@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:project_bibi/DialogScreens/bibidetail_page.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -8,12 +10,24 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin{
 
+  String userName="LeventMarine";
+  String questions="Flutter Nedir ? Nerelerde kullanılabilir ? Flutter ne zaman ve kim tarafından ortaya çıktı ? ";
+  String answer = "Flutter , Google tarafından geliştirilen açık kaynak kodlu bir mobil uygulama geliştirme SDK’sıdır. Android ve iOS için uygulama geliştirmek ve Google Fuchsia işletim sistemi için uygulama geliştirmek için kullanılır.";
+
+
+  int comment =250,like=485,dislike=500;
+  int total =0;
+
 TabController tabController;
+
+
+
+  Color bibiPink = Hexcolor("#fd79b2");
+  Color bibiBlue = Hexcolor("#51c1be");
 
 
 @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     tabController=TabController(length: 3,vsync: this);
   }
@@ -31,133 +45,110 @@ TabController tabController;
         ],
       ),
 
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(top: 20,left: 20,right: 5),
-                        child: CircleAvatar(
-                          backgroundColor: Colors.orange,
-                          radius: 35,
-                        ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 5),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.orange,
+                        radius: 35,
                       ),
+                    ),
 
 
-                      Column(
+                    Column(
 
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(top:25),
-                            child: Container(
-                              width: MediaQuery.of(context).size.width-100,
-                              child: Row(
-                                crossAxisAlignment:CrossAxisAlignment.center,
-
-                                children: <Widget>[
-                                  Text("bibiEkip",style: TextStyle(fontSize: 15,color: Colors.grey.shade700,fontWeight: FontWeight.bold),),
-
-
-                                  //SizedBox(width: 15,),
-
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 20),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Text("Software Engineering",style: TextStyle(fontSize: 15),),
-                                        Text("Database Management",style: TextStyle(fontSize: 15),),
-                                        Text("http://leventsoftware.com.tr",style: TextStyle(fontSize: 15,color: Colors.blueAccent),),
-                                      ],
-                                    ),
-                                  )
-
-                                ],
-                              ),
-                            ),
-                          ),
-
-                          SizedBox(height: 15,),
-
-                          Container(
-                            width: MediaQuery.of(context).size.width-150,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(top:25),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width-100,
                             child: Row(
                               crossAxisAlignment:CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                               children: <Widget>[
-                                Text("256 Takipçi",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
-                                Text("158 Takip",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
-                                Text("48 Total Puan",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),)
+                                Text("bibiEkip",style: TextStyle(fontSize: 15,color: Colors.grey.shade700,fontWeight: FontWeight.bold),),
+
+
+                                //SizedBox(width: 15,),
+
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 20),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text("Software Engineering",style: TextStyle(fontSize: 15),),
+                                      Text("Database Management",style: TextStyle(fontSize: 15),),
+                                      Text("http://leventsoftware.com.tr",style: TextStyle(fontSize: 15,color: Colors.blueAccent),),
+                                    ],
+                                  ),
+                                )
+
                               ],
                             ),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                          ),
+                        ),
 
-                  SizedBox(height: 15,),
+                        SizedBox(height: 15,),
 
-                ],
+                        Container(
+                          width: MediaQuery.of(context).size.width-150,
+                          child: Row(
+                            crossAxisAlignment:CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text("256 Takipçi",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+                              Text("158 Takip",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+                              Text("48 Total Puan",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),)
+                            ],
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
 
-              ),
+                SizedBox(height: 15,),
+
+              ],
 
             ),
 
+          ),
 
 
-            Container(
+
+          Theme(
+            data: ThemeData(
+              primaryColor: Colors.white
+            ),
+            child: Container(
               height: 50,
               child: AppBar(
                 bottom: getTabBar(),
               ),
             ),
+          ),
 
-            Container(
+          Expanded(
+            child: Container(
               constraints: BoxConstraints.expand(height: MediaQuery.of(context).size.shortestSide),
               child:TabBarView(
                 //physics: NeverScrollableScrollPhysics(),
                 controller: tabController,
                 children: <Widget>[
-                Container(
-                  color: Colors.white,
-                  child: ListView.builder(itemCount: 15,itemBuilder: (context,index){
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: Container(
-                        height: 50,
-                        //color: Colors.yellowAccent,
-                        child: Column(
-                          children: <Widget>[
-                            Center(child: Text(" İtem ${index.toString()}")),
-                            Center(child: Text(" İtem ${index.toString()}")),
-                          ],
-                        ),
-                      ),
-                    );
-                  })
-                ),
-
-                Container(
-                  color: Colors.grey,
-                  child: Center(
-                    child: Text("TABVİEW 2",style: TextStyle(fontSize: 54,fontWeight: FontWeight.bold,color: Colors.white),),
-                  ),
-                ),
-
-                Container(
-                  color: Colors.white,
-                  child: Center(
-                    child: Text("TABVİEW 3",style: TextStyle(fontSize: 54,fontWeight: FontWeight.bold,color: Colors.black),),
-                  ),
-                ),
+                  getMyBibi(),
+                  getMyAnswers(),
+                  getMyBibi()
 
               ],),
 
-            )
+            ),
+          )
 
 
 
@@ -166,17 +157,18 @@ TabController tabController;
 
 
 
-          ],
-        ),
+        ],
       ),
 
     );
-
 
   }
 
 TabBar getTabBar() {
   return TabBar(
+    unselectedLabelColor: Colors.grey.shade600,
+    labelColor: bibiPink,
+    indicatorColor: bibiPink,
     controller: tabController,
     tabs: <Widget>[
       Tab(text: "My Bibi's" ,),
@@ -185,4 +177,259 @@ TabBar getTabBar() {
     ],
   );
 }
+
+
+
+  Widget getMyBibi(){
+    return ListView.builder(
+        itemCount: 7,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BibiDetailPage()));
+            },
+            child: Card(
+
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+                //side: BorderSide()
+              ) ,
+              elevation: 25,
+              child: Container(
+                //color: Colors.yellow,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10,left: 10,bottom: 10,right: 3),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.blueAccent,
+                            radius:  25,
+                          ),
+                        ),
+
+
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 20,left: 5),
+                          child: Container(
+                              width: MediaQuery.of(context).size.width-100,
+                              child: Text(userName,style: TextStyle(color: Colors.grey.shade800,fontSize: 18,fontWeight: FontWeight.bold),)),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 5,),
+
+
+                    Container(
+                        constraints:BoxConstraints(
+                            maxHeight: MediaQuery.of(context).size.height,
+                            maxWidth: MediaQuery.of(context).size.width-25,
+                            minWidth: 150.0,
+                            minHeight: 0
+                        ) ,
+                        child: Text(questions,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),textAlign: TextAlign.center,)
+                    ),
+
+                    SizedBox(height: 20,),
+
+
+                    Container(
+                        constraints:BoxConstraints(
+                            maxHeight: MediaQuery.of(context).size.height,
+                            maxWidth: MediaQuery.of(context).size.width-25,
+                            minWidth: 150.0,
+                            minHeight: 0
+                        ) ,
+                        child: Text(answer,style: TextStyle(color: Colors.black,),textAlign: TextAlign.center,)
+                    ),
+
+
+
+                    SizedBox(height: 15,),
+
+                    //Card İçerisinde Bulunan Yorum Like ve Text lerin İçerisinde Bulunduğu Container
+                    Container(
+                      width: MediaQuery.of(context).size.width-75,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+
+                          //İç İçe Icon-Text
+                          Row(
+                            children: <Widget>[
+                              Icon(Icons.comment,),
+                              SizedBox(width: 10,),
+                              Text(comment.toString())
+                            ],
+                          ),
+
+                          //İç İçe Icon-Text
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Image.asset(
+                                "assets/images/like.png",
+                                height: 25,
+                                width: 25,
+                              ),
+
+                              SizedBox(width: 25,),
+
+                              Image.asset(
+                                "assets/images/dislike.png",
+                                height: 25,
+                                width: 25,
+                              ),
+                              SizedBox(width: 30,),
+                              Text(
+                                total.toString(),
+                                style: TextStyle(
+                                    color: total > 0 ? Colors.green.shade700 : Colors.red.shade700
+                                ),
+                              )
+
+
+                              //İç İçe Icon-Tex
+                            ],
+                          ),
+
+
+
+                        ],
+
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+
+  }
+
+
+  Widget getMyAnswers(){
+  return ListView.builder(
+      shrinkWrap: true,
+      itemCount: 15,
+      itemBuilder: (context, index) {
+        return Card(
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 10, left: 5, right: 5, bottom: 55),
+                    child: CircleAvatar(
+                      radius: 25,
+                      backgroundColor: Colors.deepOrange,
+
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width - 75,
+                    child: Column(
+                      children: <Widget>[
+                        Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              //tumSoruListesi[index].kullanici,
+                              "Kullanıcı $index",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            Text("23.06.10    15:45"),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(answer + index.toString()),
+                        SizedBox(
+                          height: 15,
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              Container(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width - 75,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    //İç İçe Icon-Text
+                    Opacity(
+                      opacity: 0,
+                      child: Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.comment,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(comment.toString())
+                        ],
+                      ),
+                    ),
+
+                    //İç İçe Icon-Text
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset(
+                          "assets/images/like.png",
+                          height: 25,
+                          width: 25,
+                        ),
+
+                        SizedBox(
+                          width: 25,
+                        ),
+
+                        Image.asset(
+                          "assets/images/dislike.png",
+                          height: 25,
+                          width: 25,
+                        ),
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Text(
+                          total.toString(),
+                          style: TextStyle(
+                              color: total > 0
+                                  ? Colors.green.shade700
+                                  : Colors.red.shade700),
+                        )
+
+                        //İç İçe Icon-Tex
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              )
+            ],
+          ),
+        );
+      });
+  }
 }

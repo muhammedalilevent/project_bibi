@@ -52,37 +52,34 @@ class _HomePageState extends State<HomePage> {
                         children: <Widget>[
 
                           Padding(
-                            padding: const EdgeInsets.only(top: 10,left: 10,bottom: 15,right: 3),
+                            padding: const EdgeInsets.only(top: 10,left: 10,bottom: 10,right: 3),
                             child: CircleAvatar(
                               backgroundColor: Colors.blueAccent,
                               radius:  25,
                             ),
                           ),
 
-                          Column(
-                            children: <Widget>[
 
-
-                              Container(
-                                  width: MediaQuery.of(context).size.width-75,
-                                  child: Text(userName,style: TextStyle(color: Colors.grey.shade700,fontSize: 12),)),
-
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 20,left: 5),
+                            child: Container(
+                                width: MediaQuery.of(context).size.width-100,
+                                child: Text(userName,style: TextStyle(color: Colors.grey.shade800,fontSize: 18,fontWeight: FontWeight.bold),)),
+                          ),
+                        ],
+                      ),
                               SizedBox(height: 5,),
 
 
                               Container(
                                   constraints:BoxConstraints(
                                       maxHeight: MediaQuery.of(context).size.height,
-                                      maxWidth: MediaQuery.of(context).size.width-75,
+                                      maxWidth: MediaQuery.of(context).size.width-25,
                                       minWidth: 150.0,
                                       minHeight: 0
                                   ) ,
                                   child: Text(questions,style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),textAlign: TextAlign.center,)
                               ),
-                            ],
-                          )
-                        ],
-                      ),
 
                       SizedBox(height: 20,),
 
@@ -90,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                           constraints:BoxConstraints(
                               maxHeight: MediaQuery.of(context).size.height,
-                              maxWidth: MediaQuery.of(context).size.width-75,
+                              maxWidth: MediaQuery.of(context).size.width-25,
                               minWidth: 150.0,
                               minHeight: 0
                           ) ,

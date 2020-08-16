@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:project_bibi/DialogScreens/bibidetail_page.dart';
+import 'package:project_bibi/Views/follow_page.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -20,6 +22,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin{
 
 TabController tabController;
 
+String bilgi ="Database Management";
+TextEditingController _textEditingController = TextEditingController();
+
 
 
   Color bibiPink = Hexcolor("#fd79b2");
@@ -36,18 +41,21 @@ TabController tabController;
     return
       Scaffold(
       appBar: AppBar(
-        title: Text("Profil Page"),
+        toolbarHeight: 30,
+        backgroundColor: Colors.white,
+        elevation: 0,
         actions: <Widget>[
           FlatButton(onPressed:(){
 
           },
-          child: Text("Çıkış Yap"),)
+          child: Text("Çıkış Yap",textScaleFactor: 0.8,style: TextStyle(color: bibiPink),),)
         ],
       ),
 
       body: Column(
         children: <Widget>[
           Container(
+            color: Colors.white,
             child: Column(
               children: <Widget>[
                 Row(
@@ -82,7 +90,21 @@ TabController tabController;
                                   child: Column(
                                     children: <Widget>[
                                       Text("Software Engineering",style: TextStyle(fontSize: 15),),
-                                      Text("Database Management",style: TextStyle(fontSize: 15),),
+
+
+                                          Row(
+                                            children: [
+                                              Text(bilgi,style: TextStyle(fontSize: 15),),
+                                              InkWell(
+                                                onTap: (){
+                                                  getDialog();
+                                                },
+                                                  child: Icon(Icons.edit)
+                                              )
+                                            ],
+                                          ),
+
+
                                       Text("http://leventsoftware.com.tr",style: TextStyle(fontSize: 15,color: Colors.blueAccent),),
                                     ],
                                   ),
@@ -107,8 +129,23 @@ TabController tabController;
                     crossAxisAlignment:CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      Text("256 Takipçi",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
-                      Text("158 Takip",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+                      InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => FollowPage()));
+                          },
+                          child: Text("256 Takipçi",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),)
+                      ),
+
+                      InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => FollowPage()));
+                          },
+                          child: Text("158 Takip",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),),
+                      ),
+
+
+
+
                       Text("48 Total Puan",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),)
                     ],
                   ),
@@ -262,7 +299,7 @@ TabBar getTabBar() {
                           //İç İçe Icon-Text
                           Row(
                             children: <Widget>[
-                              Icon(Icons.comment,),
+                              Image.asset("assets/images/questions_answer_icon/answer.png",height: 25,width: 25,),
                               SizedBox(width: 10,),
                               Text(comment.toString())
                             ],
@@ -272,19 +309,11 @@ TabBar getTabBar() {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Image.asset(
-                                "assets/images/like.png",
-                                height: 25,
-                                width: 25,
-                              ),
+                              Image.asset("assets/images/questions_answer_icon/like.png",height: 25,width: 25,),
 
                               SizedBox(width: 25,),
 
-                              Image.asset(
-                                "assets/images/dislike.png",
-                                height: 25,
-                                width: 25,
-                              ),
+                              Image.asset("assets/images/questions_answer_icon/dislike.png",height: 25,width: 25,),
                               SizedBox(width: 30,),
                               Text(
                                 total.toString(),
@@ -375,40 +404,29 @@ TabBar getTabBar() {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     //İç İçe Icon-Text
-                    Opacity(
-                      opacity: 0,
-                      child: Row(
+
+                      Row(
                         children: <Widget>[
-                          Icon(
-                            Icons.comment,
-                          ),
+                          Image.asset("assets/images/questions_answer_icon/comment.png",height: 25,width: 25,),
                           SizedBox(
                             width: 10,
                           ),
                           Text(comment.toString())
                         ],
                       ),
-                    ),
+
 
                     //İç İçe Icon-Text
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image.asset(
-                          "assets/images/like.png",
-                          height: 25,
-                          width: 25,
-                        ),
+                        Image.asset("assets/images/questions_answer_icon/like.png",height: 25,width: 25,),
 
                         SizedBox(
                           width: 25,
                         ),
 
-                        Image.asset(
-                          "assets/images/dislike.png",
-                          height: 25,
-                          width: 25,
-                        ),
+                        Image.asset("assets/images/questions_answer_icon/dislike.png",height: 25,width: 25,),
                         SizedBox(
                           width: 30,
                         ),
@@ -433,5 +451,82 @@ TabBar getTabBar() {
           ),
         );
       });
+  }
+
+
+
+  Dialog getDialog(){
+  showDialog(
+
+    context: context,
+  builder: (context){
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        side: BorderSide.none,
+        borderRadius: BorderRadius.circular(20),
+      ) ,
+
+      child: Container(
+        color: Colors.grey.shade300,
+        height: 300,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Kendinizi Bir Cümle İle Anlatınız",),
+            SizedBox(height: 15,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: TextField(
+                controller: _textEditingController,
+                maxLength: 25,
+              decoration: InputDecoration(
+                fillColor: Colors.white,
+                hintText: "Cümlenizi Giriniz",
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(),
+                  borderRadius: BorderRadius.circular(20),
+                )
+              ),
+              ),
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Opacity(opacity: 0,child: RaisedButton()),
+
+
+                RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)
+
+                  ),
+                  color: bibiBlue,
+                  child: Text(
+                    "Kaydet"
+                  ),
+                  onPressed: (){
+
+                    setState(() {
+                      if(_textEditingController.text.trim().length!=0)
+                        {
+                          bilgi = _textEditingController.text;
+                          Navigator.of(context).pop();
+                        }
+                    });
+
+                  },
+
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  );
+
   }
 }

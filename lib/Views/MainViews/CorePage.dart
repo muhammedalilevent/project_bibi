@@ -61,9 +61,7 @@ class _GetBottomNavBarState extends State<GetBottomNavBar> {
           child: Container(
             width: 60,
             height: 60,
-            child: Icon(
-              Icons.question_answer,
-            ),
+            child: Image.asset("assets/images/bottom_navigation_bar_icon/question.png",height: 30,width: 30,),
 
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
@@ -80,8 +78,7 @@ class _GetBottomNavBarState extends State<GetBottomNavBar> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
-          color:
-          menuItem % 2 == 0 ? bibiBlue : bibiPink,
+          color:bibiPink,
           shape: CircularNotchedRectangle(),
           child: Container(
             height: 60,
@@ -98,25 +95,9 @@ class _GetBottomNavBarState extends State<GetBottomNavBar> {
                           menuItem = 0;
                         });
                       },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.home,
-                            color: menuItem == 0
-                                ? bibiPink
-                                : Colors.white,
-                          ),
-                          Text(
-                            "AnaSayfa",
-                            style: TextStyle(
-                              color: menuItem == 0
-                                  ? bibiPink
-                                  : Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
+                      child:
+                          Image.asset("assets/images/bottom_navigation_bar_icon/home.png",height: 30,width: 30,)
+
                     ),
                     MaterialButton(
                       minWidth: 40,
@@ -126,18 +107,9 @@ class _GetBottomNavBarState extends State<GetBottomNavBar> {
                           menuItem = 1;
                         });
                       },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Image.asset("assets/images/bibi-png.png",height: 30,width: 30,),
-                          Text(
-                            "Bibi",
-                            style: TextStyle(
-                              color: menuItem == 1 ? bibiBlue : Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
+                      child:
+                          Image.asset("assets/images/bottom_navigation_bar_icon/bibibeyaz-png.png",height: 50,width: 50,),
+
                     ),
                   ],
                 ),
@@ -151,25 +123,9 @@ class _GetBottomNavBarState extends State<GetBottomNavBar> {
                           menuItem = 2;
                         });
                       },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.library_books,
-                            color: menuItem == 2
-                                ? bibiPink
-                                : Colors.white,
-                          ),
-                          Text(
-                            "Arşiv",
-                            style: TextStyle(
-                              color: menuItem == 2
-                                  ? bibiPink
-                                  : Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
+                      child:
+                          Image.asset("assets/images/bottom_navigation_bar_icon/award.png",height: 30,width: 30,)
+
                     ),
                     MaterialButton(
                       minWidth: 40,
@@ -179,21 +135,9 @@ class _GetBottomNavBarState extends State<GetBottomNavBar> {
                           menuItem = 3;
                         });
                       },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(
-                            Icons.settings,
-                            color: menuItem == 3 ? bibiBlue : Colors.white,
-                          ),
-                          Text(
-                            "Profil",
-                            style: TextStyle(
-                              color: menuItem == 3 ? bibiBlue : Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
+                      child:
+                          Image.asset("assets/images/bottom_navigation_bar_icon/user.png",height: 30,width: 30,)
+
                     ),
                   ],
                 )

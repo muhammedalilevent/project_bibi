@@ -27,8 +27,13 @@ class _BibiDetailPageState extends State<BibiDetailPage> {
     total = like - dislike;
     return Scaffold(
         appBar: AppBar(
+          toolbarHeight: 25,
           backgroundColor: Colors.white,
-          leading: InkWell(onTap: () => Navigator.of(context).pop(),child: Icon(Icons.arrow_back)),
+          leading: InkWell(onTap: () => Navigator.of(context).pop(),child:
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Icon(Icons.arrow_back),
+          )),
           elevation: 0,
         ),
         body: Container(
@@ -91,9 +96,7 @@ class _BibiDetailPageState extends State<BibiDetailPage> {
                     //İç İçe Icon-Text
                     Row(
                       children: <Widget>[
-                        Icon(
-                          Icons.comment,
-                        ),
+                        Image.asset("assets/images/questions_answer_icon/answer.png",height: 25,width: 25,),
                         SizedBox(
                           width: 10,
                         ),
@@ -105,21 +108,13 @@ class _BibiDetailPageState extends State<BibiDetailPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image.asset(
-                          "assets/images/like.png",
-                          height: 25,
-                          width: 25,
-                        ),
+                        Image.asset("assets/images/questions_answer_icon/like.png",height: 25,width: 25,),
 
                         SizedBox(
                           width: 25,
                         ),
 
-                        Image.asset(
-                          "assets/images/dislike.png",
-                          height: 25,
-                          width: 25,
-                        ),
+                        Image.asset("assets/images/questions_answer_icon/dislike.png",height: 25,width: 25,),
                         SizedBox(
                           width: 30,
                         ),
@@ -213,40 +208,27 @@ class _BibiDetailPageState extends State<BibiDetailPage> {
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: <Widget>[
                                     //İç İçe Icon-Text
-                                    Opacity(
-                                      opacity: 0,
-                                      child: Row(
-                                        children: <Widget>[
-                                          Icon(
-                                            Icons.comment,
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(comment.toString())
-                                        ],
-                                      ),
+                                    Row(
+                                      children: <Widget>[
+                                        Image.asset("assets/images/questions_answer_icon/comment.png",height: 25,width: 25,),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(comment.toString())
+                                      ],
                                     ),
 
                                     //İç İçe Icon-Text
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: <Widget>[
-                                        Image.asset(
-                                          "assets/images/like.png",
-                                          height: 25,
-                                          width: 25,
-                                        ),
+                                        Image.asset("assets/images/questions_answer_icon/like.png",height: 25,width: 25,),
 
                                         SizedBox(
                                           width: 25,
                                         ),
 
-                                        Image.asset(
-                                          "assets/images/dislike.png",
-                                          height: 25,
-                                          width: 25,
-                                        ),
+                                        Image.asset("assets/images/questions_answer_icon/dislike.png",height: 25,width: 25,),
                                         SizedBox(
                                           width: 30,
                                         ),
@@ -279,10 +261,7 @@ class _BibiDetailPageState extends State<BibiDetailPage> {
                   Padding(
                     padding: const EdgeInsets.only(right: 8),
                     child: InkWell(
-                      child: Icon(
-                        Icons.comment,
-                        //color: Colors.grey,
-                      ),
+                      child:  Image.asset("assets/images/questions_answer_icon/comment.png",height: 20,width: 20,),
                     ),
                   ),
 

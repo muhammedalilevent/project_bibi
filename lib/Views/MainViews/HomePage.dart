@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                             //İç İçe Icon-Text
                             Row(
                               children: <Widget>[
-                                Icon(Icons.comment,),
+                                Image.asset("assets/images/questions_answer_icon/answer.png",height: 25,width: 25,),
                                 SizedBox(width: 10,),
                                 Text(comment.toString())
                               ],
@@ -118,19 +118,11 @@ class _HomePageState extends State<HomePage> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                Image.asset(
-                                  "assets/images/like.png",
-                                  height: 25,
-                                  width: 25,
-                                ),
+                                Image.asset("assets/images/questions_answer_icon/like.png",height: 25,width: 25,),
 
                                 SizedBox(width: 25,),
 
-                                Image.asset(
-                                  "assets/images/dislike.png",
-                                  height: 25,
-                                  width: 25,
-                                ),
+                                Image.asset("assets/images/questions_answer_icon/dislike.png",height: 25,width: 25,),
                                 SizedBox(width: 30,),
                                 Text(
                                   total.toString(),
@@ -149,7 +141,8 @@ class _HomePageState extends State<HomePage> {
                           ],
 
                         ),
-                      )
+                      ),
+                      SizedBox(height: 15,)
                     ],
                   ),
                 ),

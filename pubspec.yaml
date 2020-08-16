@@ -58,6 +58,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/images/bottom_navigation_bar_icon/
+    - assets/images/questions_answer_icon/
     - assets/images/
 
 

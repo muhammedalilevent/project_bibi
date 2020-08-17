@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:project_bibi/DialogScreens/ProfilDS.dart';
 import 'package:project_bibi/DialogScreens/bibidetail_page.dart';
 
 class HomePage extends StatefulWidget {

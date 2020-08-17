@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:project_bibi/DialogScreens/bibidetail_page.dart';
@@ -81,7 +80,6 @@ TextEditingController _textEditingController = TextEditingController();
 
                               children: <Widget>[
                                 Text("bibiEkip",style: TextStyle(fontSize: 15,color: Colors.grey.shade700,fontWeight: FontWeight.bold),),
-
 
                                 //SizedBox(width: 15,),
 
@@ -493,6 +491,7 @@ TabBar getTabBar() {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                //Gereksiz!!
                 Opacity(opacity: 0,child: RaisedButton()),
 
 

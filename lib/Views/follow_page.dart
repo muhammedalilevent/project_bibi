@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 
 class FollowPage extends StatefulWidget {
@@ -7,18 +8,26 @@ class FollowPage extends StatefulWidget {
 }
 
 class _FollowPageState extends State<FollowPage> {
+
+  Color bibiPink = Hexcolor("#fd79b2");
+  Color bibiBlue = Hexcolor("#51c1be");
+
+  String butonText="Takip Et";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 30,
-        backgroundColor: Colors.white,
-        leading: InkWell(onTap: () => Navigator.of(context).pop(),child:
-        Padding(
-          padding: const EdgeInsets.only(top: 6),
-          child: Icon(Icons.arrow_back),
-        )),
-        elevation: 0,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(30.0),
+        child: AppBar(
+          backgroundColor: Colors.white,
+          leading: InkWell(onTap: () => Navigator.of(context).pop(),child:
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Icon(Icons.arrow_back),
+          )),
+          elevation: 0,
+        ),
       ),
 
 
@@ -36,6 +45,15 @@ class _FollowPageState extends State<FollowPage> {
                   ),
 
                   title: Text("Kullanıcı ${index.toString()}",style: TextStyle(fontWeight: FontWeight.bold),),
+                  trailing: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius:BorderRadius.circular(15),
+                    ),
+                    child: Text(butonText),
+                    color: bibiBlue,
+                    onPressed: (){
+                    },
+                  ),
                 ),
               ),
 

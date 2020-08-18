@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:project_bibi/DialogScreens/bibidetail_page.dart';
+import 'package:project_bibi/Views/MainViews/visitor_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -52,9 +53,14 @@ class _HomePageState extends State<HomePage> {
 
                           Padding(
                             padding: const EdgeInsets.only(top: 10,left: 10,bottom: 10,right: 3),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.blueAccent,
-                              radius:  25,
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => VisitorPage()));
+                              },
+                              child: CircleAvatar(
+                                backgroundColor: Colors.blueAccent,
+                                radius:  25,
+                              ),
                             ),
                           ),
 
@@ -63,7 +69,13 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.only(bottom: 20,left: 5),
                             child: Container(
                                 width: MediaQuery.of(context).size.width-100,
-                                child: Text(userName,style: TextStyle(color: Colors.grey.shade800,fontSize: 18,fontWeight: FontWeight.bold),)),
+                                child: InkWell(
+                                    onTap: (){
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => VisitorPage()));
+                                    },
+                                    child: Text(userName,style: TextStyle(color: Colors.grey.shade800,fontSize: 18,fontWeight: FontWeight.bold),)
+                                )
+                            ),
                           ),
                         ],
                       ),

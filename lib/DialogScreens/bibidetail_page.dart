@@ -26,20 +26,23 @@ class _BibiDetailPageState extends State<BibiDetailPage> {
   Widget build(BuildContext context) {
     total = like - dislike;
     return Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 25,
-          backgroundColor: Colors.white,
-          leading: InkWell(onTap: () => Navigator.of(context).pop(),child:
-          Padding(
-            padding: const EdgeInsets.only(top: 6),
-            child: Icon(Icons.arrow_back),
-          )),
-          elevation: 0,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(30.0),
+          child: AppBar(
+            backgroundColor: Colors.white,
+            leading: InkWell(onTap: () => Navigator.of(context).pop(),child:
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Icon(Icons.arrow_back),
+            )),
+            elevation: 0,
+          ),
         ),
         body: Container(
           color: Colors.white,
           child: Column(
             children: <Widget>[
+
               Row(
                 children: <Widget>[
                   Padding(
@@ -115,6 +118,7 @@ class _BibiDetailPageState extends State<BibiDetailPage> {
                         ),
 
                         Image.asset("assets/images/questions_answer_icon/dislike.png",height: 25,width: 25,),
+
                         SizedBox(
                           width: 30,
                         ),

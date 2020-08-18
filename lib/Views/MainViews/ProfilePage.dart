@@ -39,16 +39,18 @@ TextEditingController _textEditingController = TextEditingController();
   Widget build(BuildContext context) {
     return
       Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 30,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        actions: <Widget>[
-          FlatButton(onPressed:(){
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(30.0),
+        child: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          actions: <Widget>[
+            FlatButton(onPressed:(){
 
-          },
-          child: Text("Çıkış Yap",textScaleFactor: 0.8,style: TextStyle(color: bibiPink),),)
-        ],
+            },
+            child: Text("Çıkış Yap",textScaleFactor: 0.8,style: TextStyle(color: bibiPink),),)
+          ],
+        ),
       ),
 
       body: Column(
@@ -61,9 +63,22 @@ TextEditingController _textEditingController = TextEditingController();
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(left: 20,right: 5),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.orange,
-                        radius: 35,
+                      child: Stack(
+                        children: <Widget>[
+                          CircleAvatar(
+                            backgroundImage: NetworkImage("https://placekitten.com/200/200"),
+                            radius: 35,
+                          ),
+                          Positioned(
+                            left: 45,
+                            top: 40,
+                            child: CircleAvatar(
+                                backgroundColor: Colors.green,
+                                radius: 12,
+                                child: Icon(Icons.edit,color: Colors.black,size: 15,)
+                            ),
+                          )
+                        ],
                       ),
                     ),
 
